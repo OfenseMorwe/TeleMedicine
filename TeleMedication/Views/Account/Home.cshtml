@@ -1,0 +1,477 @@
+﻿@model MedServices.Models.ClassDomain.User
+
+@{
+    ViewData["Title"] = "Home Page";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta content="" name="description" />
+    <meta content="" name="keywords" />
+    <!-- Favcons -->
+    <link rel="icon" href="~/img/favicon.png" />
+    <link rel="stylesheet" href="~/CW_Eye_Health.styles.css" asp-append-version="true" />
+    <link rel="apple-touch-icon" href="~/img/apple-touch-icon.png" />
+    <!--Fonts-->
+    <link href="https://fonts.googleapis.com" rel="preconnect">
+    <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <!--CSS Files -->
+    <link rel="stylesheet" href="~/vendor/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/vendor/bootstrap-icons/bootstrap-icons.css" />
+    <link rel="stylesheet" href="~/vendor/aos/aos.css" />
+    <link rel="stylesheet" href="~/vendor/glightbox/css/glightbox.min.css" />
+    <link rel="stylesheet" href="~/vendor/swiper/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="~/vendor/fontawesome-free/css/all.min.css" />
+    <!--Main CSS-->
+    <link rel="stylesheet" href="~/css/main.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
+</head>
+<body class="index-page">
+    <header id="header" class="header sticky-top">
+
+        <div class="branding d-flex align-items-center">
+            <div class="container position-relative d-flex align-items-center justify-content-between">
+                <a href="Views/EyeHealth/LandingPage.cshtml" class="logo d-flex align-itemsalign-content-center me-auto">
+
+                    <!-- <img src="/img/logo.png" alt=""> -->
+                    <h1 class="sitename">Eye Health</h1>
+                </a>
+            </div>
+
+            <!--Nav Manu-->
+            <nav id="navmenu" class="navmenu">
+                <ul>
+                    <li><a href="#hero" class="active">Home<br /></a></li>
+                    <li><a href="#departments">Departments</a></li>
+                    <li><a href="#contact">Contact</a></li>
+
+                </ul>
+                <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+            </nav>
+            <a class="cta-btn d-none d-sm-block" href="#Login">Login</a>
+        </div>
+
+    </header>
+    <main class="main">
+        @if (!string.IsNullOrEmpty(TempData["Message"] as string))
+        {
+            <script>
+                swal({
+                    title: "Success",
+                    text: "@TempData["Message"]",
+                    icon: "success",
+                    button: "OK",
+                });
+            </script>
+        }
+        <section id="hero" class="hero section light-background">
+            <img src="~/img/2017 Top Doctors.jpeg" alt=" " data-aos="fade-in" />
+            <div class="container position-relative">
+                <!--Welcome-->
+                <div class="welcome position-relative" data-aos="fade-down" data-aos-delay="100">
+                    <h2>MEET WITH YOUR DOCTOR</h2>
+                    <p>Where Desires<br> meets expertise</p>
+                </div>
+
+                <!--Why box-->
+                <div class="content row gy-4">
+                    <div class="col-lg-4 d-flex align-items-stretch">
+                        <div class="why-box" data-aos="zoom-out" data-aos-delay="200">
+                            <h3>Why Choose TeleMedicine?</h3>
+                            <div class="text-center">
+                                <a href="#contact" class="more-btn"><span>Contact US</span></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-8 d-flex align-items-stretch">
+                        <div class="d-flex flex-column justify-content-center">
+                            <div class="row gy-4">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </section>
+
+        <!--Stats section-->
+        <section id="stats" class="stats section light-background">
+
+            <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+                <div class="row gy-4">
+
+                    <div class="col-lg-3 col-md-6 d-flex flex-column align-items-center">
+                        <i class="fa-solid fa-user-doctor"></i>
+                        <div class="stats-item">
+                            <span data-purecounter-start="0" data-purecounter-end="60" data-purecounter-duration="1" class="purecounter"></span>
+                            <p>Doctors</p>
+                        </div>
+                    </div><!-- End Stats Item -->
+
+                    <div class="col-lg-3 col-md-6 d-flex flex-column align-items-center">
+                        <i class="fa-regular fa-hospital"></i>
+                        <div class="stats-item">
+                            <span data-purecounter-start="0" data-purecounter-end="120" data-purecounter-duration="1" class="purecounter"></span>
+                            <p>Patients</p>
+                        </div>
+                    </div><!-- End Stats Item -->
+
+                    <div class="col-lg-3 col-md-6 d-flex flex-column align-items-center">
+                        <i class="fas fa-flask"></i>
+                        <div class="stats-item">
+                            <span data-purecounter-start="0" data-purecounter-end="12" data-purecounter-duration="1" class="purecounter"></span>
+                            <p>Users</p>
+                        </div>
+                    </div><!-- End Stats Item -->
+
+                    <div class="col-lg-3 col-md-6 d-flex flex-column align-items-center">
+                        <i class="fas fa-award"></i>
+                        <div class="stats-item">
+                            <span data-purecounter-start="0" data-purecounter-end="90+" data-purecounter-duration="1" class="purecounter"></span>
+                            <p>Awards</p>
+                        </div>
+                    </div><!-- End Stats Item -->
+
+                </div>
+
+            </div>
+
+        </section>
+        <!--Login Section-->
+
+       <section id="Login" class="Login section position-relative">
+    <div class="container section-title position-relative" data-aos="fade-up">
+        <h2>Login</h2>
+        <p>Hello, we are glad to have you back</p>
+    </div>
+    <div class="container position-relative" data-aos="fade-up" data-aos-delay="100">
+        <form class="form_login" asp-controller="Health" asp-action="Home" method="post">
+            @Html.AntiForgeryToken()
+
+            <div asp-validation-summary="All" class="text-danger"></div>
+
+            <div class="form-group mt-5">
+                <label for="Email">Username</label>
+                <input asp-for="Email" class="form-control" id="Email" placeholder="Email" required>
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label for="Password">Password</label>
+                <input type="password" class="form-control" id="Password" asp-for="PasswordHash" placeholder="Password" required>
+                        <span asp-validation-for="PasswordHash" class="text-danger"></span>
+                <small class="form-text text-muted">
+                    <button onclick="showForgotPasswordModal()" style="color:white; border:none; background-color:transparent;">Forgot Password?</button>
+                    |
+                    <button onclick="showRegisterModal()" style="color:white; border:none; background-color:transparent;">Register</button>
+                </small>
+            </div>
+            <button type="submit" class="btn btn-primary">Login</button>
+        </form>
+    </div>
+
+    <!-- Forgot Password Modal -->
+    <div class="modal fade" id="forgotPasswordModal" tabindex="-1" role="dialog" aria-labelledby="forgotPasswordModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="forgotPasswordModalLabel">Forgot Password</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="forgotPasswordForm" asp-controller="Health" asp-action="ForgotAccount" method="post">
+                        <div class="form-group">
+                            <label for="Email">Enter your email address</label>
+                            <input asp-for="Email" class="form-control" id="Email" placeholder="Email" name="Email" required>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary" form="forgotPasswordForm">Submit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Register Modal -->
+    <div class="modal fade" id="registerModal" tabindex="-1" role="dialog" aria-labelledby="registerModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="registerModalLabel">Register</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="registerForm" asp-controller="Health" asp-action="Register" method="post">
+                        @Html.AntiForgeryToken()
+
+                        <div class="form-group">
+                            <label for="FullName">Full Name</label>
+                            <input asp-for="FullName" class="form-control" id="FullName" placeholder="Full Name" name="FullName" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="Email">Email</label>
+                            <input asp-for="Email" class="form-control" id="RegisterEmail" placeholder="Email" name="Email" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="PasswordHash">Password</label>
+                            <input type="password" asp-for="PasswordHash" class="form-control" id="PasswordHash" placeholder="Password" name="PasswordHash" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="Role">Role</label>
+                            <select asp-for="Role" class="form-control" id="Role" name="Role" required>
+                                <option value="Patient">Patient</option>
+                                <option value="Doctor">Doctor</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="PhoneNumber">Phone Number</label>
+                            <input asp-for="PhoneNumber" class="form-control" id="PhoneNumber" placeholder="Phone Number" name="PhoneNumber" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="CreatedAt">Created At</label>
+                            <input type="datetime-local" asp-for="CreatedAt" class="form-control" id="CreatedAt" name="CreatedAt" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="UpdatedAt">Updated At</label>
+                            <input type="datetime-local" asp-for="UpdatedAt" class="form-control" id="UpdatedAt" name="UpdatedAt">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary" form="registerForm">Register</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+        <!-- Departments Section -->
+        <section id="departments" class="departments section">
+
+            <!-- Section Title -->
+            <div class="container section-title" data-aos="fade-up">
+                <h2>Departments</h2>
+                <p>Our Team working together to give the best services in the region</p>
+            </div><!-- End Section Title -->
+
+            <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+                <div class="row">
+                    <div class="col-lg-3">
+                        <ul class="nav nav-tabs flex-column">
+                            <li class="nav-item">
+                                <a class="nav-link" data-bs-toggle="tab" href="#departments-tab-5">Eye Care</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-9 mt-4 mt-lg-0">
+                        <div class="tab-content">
+                            <div class="tab-pane" id="departments-tab-5">
+                                <div class="row">
+                                    <div class="col-lg-8 details order-2 order-lg-1">
+                                        <h3></h3>
+                                        <p class="fst-italic">GET READY TO SEE THE WORLD</p>
+                                        <p>The only thing worse than being blind is having sight but no vision , our dedicated team work effortless to find the best practices in the world to give your eye sight better vision </p>
+                                    </div>
+                                    <div class="col-lg-4 text-center order-1 order-lg-2">
+                                        <img src="assets/img/departments-5.jpg" alt="" class="img-fluid">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </section>
+        <!-- Doctors Section -->
+       
+        <!-- Contact Section -->
+        <section id="contact" class="contact section">
+
+            <!-- Section Title -->
+            <div class="container section-title" data-aos="fade-up">
+                <h2>Contact</h2>
+                <p>Use the correct details </p>
+            </div><!-- End Section Title -->
+
+            <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+                <div class="row gy-4">
+
+                    <div class="col-lg-4">
+                        <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="300">
+                            <i class="bi bi-geo-alt flex-shrink-0"></i>
+                            <div>
+                                <h3>Location</h3>
+                                <p>Nelson Mandela University</p>
+                            </div>
+                        </div><!-- End Info Item -->
+
+                        <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="400">
+                            <i class="bi bi-telephone flex-shrink-0"></i>
+                            <div>
+                                <h3>Call Us</h3>
+                                <p>+27 68 193 5891</p>
+                            </div>
+                        </div><!-- End Info Item -->
+
+                        <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="500">
+                            <i class="bi bi-envelope flex-shrink-0"></i>
+                            <div>
+                                <h3>Email Us</h3>
+                                <p>Codewizardz@eyehealth.com</p>
+                            </div>
+                        </div><!-- End Info Item -->
+
+                    </div>
+
+                    <div class="col-lg-8">
+                        <form action="forms/contact.php" method="post" class="php-email-form" data-aos="fade-up" data-aos-delay="200">
+                            <div class="row gy-4">
+                                <div class="col-md-6 ">
+                                    <input type="email" class="form-control" name="email" placeholder="Email" required="">
+                                </div>
+
+                                <div class="col-md-6">
+                                    <input type="text" name="name" class="form-control" placeholder="Name" required="">
+                                </div>
+
+                                <div class="col-md-6">
+                                    <input type="text" name="name" class="form-control" placeholder="Message" required="(optional)">
+                                </div>
+
+                                <div class="row">
+
+                                    <div class="col-md-4 form-group mt-3">
+                                        <input type="datetime-local" name="date" class="form-control datepicker" id="date" placeholder="Appointment Date" required="">
+                                    </div>
+
+                                    <div class="col-md-12 text-center">
+                                        <div class="loading">Loading</div>
+                                        <div class="error-message"></div>
+                                        <div class="sent-message">Your message has been sent. Thank you!</div>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary mt-4">Send</button>
+                                </div>
+
+
+                            </div>
+                        </form>
+                    </div>
+                    <!-- End Contact Form -->
+                </div>
+
+            </div>
+
+        </section>
+    </main>
+    <footer id="footer" class="footer light-background">
+
+        <div class="container footer-top">
+            <div class="row gy-4">
+                <div class="col-lg-4 col-md-6 footer-about">
+                    <a href="index.html" class="logo d-flex align-items-center">
+                        <span class="sitename">Eye Health</span>
+                    </a>
+                    <div class="footer-contact pt-3">
+                        <p>Nelson Mandela University</p>
+                        <p>North Campus</p>
+                        <p class="mt-3"><strong>Phone:</strong> <span>+27 68 1935891</span></p>
+                        <p><strong>Email:</strong> <span>Codewizards@eyehealth.com</span></p>
+                    </div>
+                    <div class="social-links d-flex mt-4">
+                        <a href=""><i class="bi bi-twitter-x"></i></a>
+                        <a href=""><i class="bi bi-facebook"></i></a>
+                        <a href=""><i class="bi bi-instagram"></i></a>
+                        <a href=""><i class="bi bi-linkedin"></i></a>
+                    </div>
+                </div>
+
+                <div class="col-lg-2 col-md-3 footer-links">
+                    <h4>Useful Links</h4>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">About us</a></li>
+                        <li><a href="#">Services</a></li>
+                        <li><a href="#">Terms of service</a></li>
+                        <li><a href="#">Privacy policy</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-2 col-md-3 footer-links">
+                    <h4>Our Services</h4>
+                    <ul>
+                        <li><a href="#">Web Design</a></li>
+                        <li><a href="#">Web Development</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container copyright text-center mt-4">
+            <p>© <span>Copyright</span> <strong class="px-1 sitename">Eye Health</strong> <span>All Rights Reserved</span></p>
+            <div class="credits">
+            </div>
+        </div>
+
+    </footer>
+    <!-- Scroll Top -->
+    <a href="#hero" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+    <!-- Preloader -->
+    <div id="preloader"></div>
+
+    <!-- Vendor JS Files -->
+    <script src="~/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="~/vendor/php-email-form/validate.js"></script>
+    <script src="~/vendor/aos/aos.js"></script>
+    <script src="~/vendor/glightbox/js/glightbox.min.js"></script>
+    <script src="~/vendor/purecounter/purecounter_vanilla.js"></script>
+    <script src="~/vendor/swiper/swiper-bundle.min.js"></script>
+
+    <!-- Main JS File -->
+    <script src="~/js/main.js"></script>
+    <!--Login Regex Script-->
+    <script src="~/js/LoginRegex.js"></script>
+    <script>
+        function showForgotPasswordModal() {
+            $('#forgotPasswordModal').modal('show');
+        }
+    </script>
+
+</body>
+
+</html>
+
+
+
+
+
+
+

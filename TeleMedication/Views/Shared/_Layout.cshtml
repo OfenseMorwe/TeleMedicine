@@ -1,0 +1,90 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - TeleMedication</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="sidebar">
+                <!-- User Info Section -->
+                <div class="user-info">
+                    <img src="user-placeholder.jpg" alt="User Profile" class="user-image">
+                    <span class="user-name">John Doe</span>
+                </div>
+
+                <!-- Navigation Menu -->
+                <ul class="menu">
+                    <li>
+                        <a href="#" class="menu-link">
+                            <i class='bx bx-home'></i>
+                            <span>Dashboard</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="menu-link">
+                            <i class='bx bx-calendar'></i>
+                            <span>Appointments</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="menu-link">
+                            <i class='bx bx-file'></i>
+                            <span>Medical Records</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="menu-link">
+                            <i class='bx bx-message'></i>
+                            <span>Messages</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="menu-link">
+                            <i class='bx bx-pill'></i>
+                            <span>Prescriptions</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="menu-link">
+                            <i class='bx bx-credit-card'></i>
+                            <span>Billing & Payments</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="menu-link">
+                            <i class='bx bx-cog'></i>
+                            <span>Profile Settings</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="menu-link">
+                            <i class='bx bx-log-out'></i>
+                            <span>Logout</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2024 - TeleMedication - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/Image.js asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

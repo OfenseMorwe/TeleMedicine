@@ -1,0 +1,128 @@
+﻿@model IEnumerable<MedServices.Models.ClassDomain.AppointmentDetail>
+
+@{
+    ViewData["Title"] = "Dashboard";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/boxicons/2.1.4/css/boxicons.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <!-- NAVIGATION BAR CSS FILES -->
+    <link href="~/css/Notification.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <!--Font awesome css-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
+    <!--JS AJAX file-->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.2.0/fullcalendar.min.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.2.0/fullcalendar.min.js"></script>
+    <!--BAR GRAPH FILE-->
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    
+</head>
+<body>
+    @if (!string.IsNullOrEmpty(TempData["FailedMessage"] as string))
+    {
+        <script>
+            swal({
+                icon: "error",
+                title: "Oops...",
+                text: "@TempData["FailedMessage"]",
+                footer: '<a href="/Administrator/Admin">Why do I have this issue?</a>'
+            });
+        </script>
+    }
+    <main>
+        <!-- Dashboard Section -->
+        <section>
+            <form method="post" asp-action="@Url.Action("PatientDashboard", "Patient")">
+                <label for="status">Appointment Status</label>
+                <select id="status" name="status" class="form-control">
+                    <option value="Pending">Pending</option>
+                    <option value="Confirmed">Confirmed</option>
+                    <option value="Completed">Completed</option>
+                    <option value="Cancelled">Cancelled</option>
+                </select>
+                <button type="submit" class="btn btn-primary">Filter</button>
+            </form>
+
+            <section class="appointments-notifications-section">
+                <div class="accordion" id="appointmentAccordion">
+                    @foreach (var appointment in Model)
+                    {
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="heading@appointment.AppointmentID">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse@appointment.AppointmentID" aria-expanded="true" aria-controls="collapse@appointment.AppointmentID">
+                                    @appointment.DoctorName - @appointment.PatientName
+                                </button>
+                            </h2>
+                            <div id="collapse@appointment.AppointmentID" class="accordion-collapse collapse" aria-labelledby="heading@appointment.AppointmentID" data-bs-parent="#appointmentAccordion">
+                                <div class="accordion-body">
+                                    <strong>Date:</strong> @appointment.AppointmentDate.ToShortDateString() <br>
+                                    <strong>Time:</strong> @appointment.AppointmentTime.ToString(@"hh\:mm tt") <br>
+                                    <strong>Status:</strong> @appointment.Status
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+                <div id="calendar"></div>
+
+                <div class="notifications-container">
+                    <div class="section-header">
+                        <h2>Notifications</h2>
+                        <button class="view-all-btn">View All</button>
+                    </div>
+                    <div class="notifications-list">
+                        <!-- Sample Notification -->
+                        <div class="notification-card pending">
+                            <p><strong>Pending Prescription</strong></p>
+                            <p>Prescription for Patient: John Doe is pending approval.</p>
+                        </div>
+                        <div class="notification-card message">
+                            <p><strong>New Message</strong></p>
+                            <p>You have a new message from Dr. Smith regarding test results.</p>
+                        </div>
+                        <!-- Repeat the above div for other notifications -->
+                    </div>
+                </div>
+            </section>
+        </section>
+    </main>
+
+    <script>
+        $(document).ready(function () {
+            $('#calendar').fullCalendar({
+                events: [
+        @foreach (var appointment in Model)
+        {
+            var appointmentDate = appointment.AppointmentDate.ToString("yyyy-MM-dd") + 'T' + appointment.AppointmentTime.ToString(@"HH:mm:ss");
+            var statusColor = appointment.Status == "Pending" ? "orange" : appointment.Status == "Completed" ? "green" : "red";
+            <text>
+                        {
+                            title: "@appointment.DoctorName - @appointment.PatientName",
+                            start: '@appointmentDate',
+                            color: '@statusColor',
+                            description: '@appointment.Status'
+                        },
+            </text>
+        }
+                        ]
+            });
+        });
+    </script>
+
+    @section Scripts {
+        <script src="~/js/Image.js"></script>
+    }
+</body>
+</html>
